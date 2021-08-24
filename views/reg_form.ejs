@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!---font awasome-->
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    />
+    <link rel="stylesheet" href="/css/reg_form.css" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <nav class="nav" id="nav">
+      <div class="logo" id="logo">
+        <h1><span class="fab fa-accusoft"></span><span> POWA</span></h1>
+      </div>
+      <ul>
+        <li><a href="#">Home</a></li>
+        
+        <li><a href="/user/logout" class="sign-out-btn">Sign out</a></li>
+      </ul>
+    </nav>
+    <div class="container">
+      <div class="sidebar">
+        <div><h1>Applicant</h1></div>
+        <div>
+          <ul>
+            <!-- <li><a href="/user/create"><span class="fas fa-users"></span>new admin</a></li> -->
+            
+            <li>
+              <a href="/student/record"><span class="fas fa-list"></span>Students</a>
+            </li>
+            <li>
+                <a href="/user/logout"><span class="fas fa-sign-out"></span>Sign out</a>
+              </li>
+          </ul>
+        </div>
+      </div>
+      <div class="profile-content">
+        <div class="user">
+          <!-- <div class="user-image">
+                    <img src="./img/ceo.jpeg" alt="image" />
+                </div> -->
+          <div class="edit-form">
+            <form method="post" action="/student/reg_form">
+              <div class="persornal-info">
+                <h3>Personal info</h3>
+                <input type="text" name="name" placeholder="name" />
+                <div class="name error"></div>
+                <input type="email" name="email" placeholder="email" />
+                <div class="email error"></div>
+                <select class="gender" name="gender" id="gender">
+                  <option value="">gender</option>
+                  <option value="male">male</option>
+                  <option value="female">female</option>
+                </select>
+                <div class="gender error"></div>
+                <input type="date" name="dob" />
+                <div class="dob error"></div>
+              </div>
+              <div class="school-info">
+                <h3>School info</h3>
+                <select class="school" name="school" id="school">
+                  <option value="">school</option>
+                  <option value="1">Nursary</option>
+                  <option value="2">Primary</option>
+                  <option value="3">Secondary</option>
+                </select>
+                <div class="school error"></div>
+                <select class="class" name="sclass" id="class">
+                  <option value="">class</option>
+                  <option value="nursary 1">nursary 1</option>
+                  <option value="nursary 2">nursary 2</option>
+                  <option value="nursary 3">nursary 3</option>
+                  <option value="primary 1">primary 1</option>
+                  <option value="primary 2">primary 2</option>
+                  <option value="primary 3">primary 3</option>
+                  <option value="primary 4">primary 4</option>
+                  <option value="primary 5">primary 5</option>
+                  <option value="jss 1">jss 1</option>
+                  <option value="jss 2">jss 2</option>
+                  <option value="jss 3">jss 3</option>
+                  <option value="ss 1">ss 1</option>
+                  <option value="ss 2">ss 2</option>
+                  <option value="ss 3">ss 3</option>
+                </select>
+                <div class="sclass error"></div>
+              </div>
+              <div class="parent-info">
+                <h3>parent info</h3>
+                <input type="text" name="pname" placeholder="full name" />
+                <div class="pname error"></div>
+                <input type="email" name="pemail" placeholder="email" />
+                <div class="pemail error"></div>
+                <input type="text" name="pphone" placeholder="phone" />
+                <div class="pphone error"></div>
+                <textarea name="address" placeholder="address"></textarea>
+                <div class="address error"></div>
+              </div>
+              <button>Apply now</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <!-- <script>
+    const formEL = document.querySelector('form');
+    const submitErrorEl = formEL.querySelector('button');
+    const nameErrorEl = document.querySelector('.name.error');
+    const emailErrorEl = document.querySelector('.email.error');
+    const dobErrorEl = document.querySelector('.dob.error');
+    const genderErrorEl = document.querySelector('.gender.error');
+    const schoolErrorEl = document.querySelector('.school.error');
+    const sclassErrorEl = document.querySelector('.sclass.error');
+    const pnameErrorEl = document.querySelector('.pname.error');
+    const pemailErrorEl = document.querySelector('.pemail.error');
+    const pphoneErrorEl = document.querySelector('.pphone.error');
+    const addressErrorEl = document.querySelector('.address.error');
+
+    formEL.addEventListener('submit', async (e) =>{
+        e.preventDefault();
+        // console.log(formEL, submitEl);
+        let name = formEL.name.value;
+        let email = formEL.email.value;
+        let dob = formEL.dob.value;
+        let gender = formEL.gender.value;
+        let school = formEL.school.value;
+        let sclass = formEL.sclass.value;
+        let pname = formEL.pname.value;
+        let pemail = formEL.pemail.value;
+        let pphone = formEL.pphone.value;
+        let address = formEL.address.value;
+
+        try{
+            let formdata = {name, email, dob, gender, school, sclass, pname, pemail, pphone, address};
+            let url = '/student/reg_form';
+            let options = {
+                method: 'POST',
+                body: JSON.stringify(formdata),
+                headers: {'Content-Type':'application/json'}
+            }
+            const req = await fetch(url, options);
+            const data = await req.json();
+           
+            if(data.errors){
+                nameErrorEl.textContent = data.errors.name;
+                emailErrorEl.textContent = data.errors.email;
+                dobErrorEl.textContent = data.errors.dob;
+                genderErrorEl.textContent = data.errors.gender;
+                schoolErrorEl.textContent = data.errors.school;
+                sclassErrorEl.textContent = data.errors.sclass;
+                pnameErrorEl.textContent = data.errors.pname;
+                pemailErrorEl.textContent = data.errors.pemail;
+                pphoneErrorEl.textContent = data.errors.pphone;
+                addressErrorEl.textContent = data.errors.address;
+
+            }
+            if(data.student){
+                location.assign('/invoice');
+            }
+        }catch(err) {
+            console.log(err.message);
+        }     
+    })
+</script> -->
+</html>

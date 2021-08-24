@@ -1,0 +1,12 @@
+{
+    "name":"Almustapha Tukur Umar",
+    "email":"amustaphatukur00@gmail.com",
+    "dob":"14/11/1991",
+    "gender":"male",
+    "school":"primary",
+    "class":"primary 1",
+"parent":{
+    "name":"Engr. Tukur Umar",
+    "email":"parent@gmail.com",
+    "address": "tudun wada"
+}}

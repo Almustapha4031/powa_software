@@ -1,0 +1,159 @@
+:root {
+  --bgGradient: linear-gradient(to right, #f3fcf4 0%, #c4fcc8 100%);
+  --primaryColor: #c4fcc8;
+  --primary: #0275d8;
+  --info: #5bc0de;
+  --success: #5cb85c;
+  --primaryColor2: #f3fcf4;
+  --secondaryColor: #0d004c;
+  --buttonBG: #2c2d5f;
+  --white: #ffffff;
+  --fontfmly: montserrat, arial, verdana;
+  --mdHeaderfont: 20px;
+  --mdTextfont: 17px;
+  --shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
+  --shadowAll: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 5px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: #e3fce5;
+  background-image: linear-gradient(315deg, #f3fcf4 0%, #c4fcc8 74%);
+  font-family: var(--fontfmly);
+  margin: 0px;
+  padding: 0px;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin: 20px auto;
+  border-radius: 5px;
+  background: none;
+  padding: 20px 40px;
+  /* font-size: 3rem; */
+}
+.container a#soft_logo {
+  margin-top: 7rem;
+  margin-bottom: 40px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 3rem;
+  font-family: sans-serif;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: var(--buttonBG);
+}
+form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  /* height: 400px; */
+  /* background-color: white; */
+  padding: 20px auto;
+  margin-bottom: 2rem;
+}
+form label {
+  display: none;
+}
+form input {
+  padding: 10px 15px;
+  margin-top: 27px;
+  border: none;
+  border-radius: 7px;
+  background-color: inherit;
+  border-bottom: 3px solid rgba(128, 128, 128, 0.5);
+}
+form input:focus {
+  outline: none;
+}
+form input::placeholder {
+  color: rgb(75, 74, 74);
+  opacity: 0.5;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  font-family: Roboto;
+}
+form button {
+  padding: 13px 10px;
+  border: none;
+  background-color: var(--buttonBG);
+  border-radius: 10px;
+  color: var(--primaryColor);
+  font-size: 1.2rem;
+  font-family: sans-serif;
+  font-weight: 555;
+  letter-spacing: 2px;
+  cursor: pointer;
+  margin-top: 30px;
+  /* width: 20%; */
+}
+form button:hover {
+  opacity: 0.6;
+}
+form .error {
+  color: red;
+  font-size: 1rem;
+}
+
+/*contact form end*/
+@media screen and (max-width: 960px) {
+  .org_info .freeinfo,
+  .org_info_title {
+    display: none;
+  }
+  .container {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .reg_btn .register,
+  nav ul li:nth-child(1),
+  li:nth-child(3),
+  li:nth-child(4) {
+    display: none;
+  }
+}
+@media screen and (max-width: 560px) {
+  .school_categories {
+    display: inline-block;
+    width: 100%;
+  }
+  .school_categories .card {
+    flex-basis: 100%;
+    margin-bottom: 25px;
+  }
+  .screen .app-title {
+    display: none;
+  }
+  .screen .screen-body-item {
+    background-color: var(--secondaryColor);
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+  }
+  .screen .screen-body-item .app-form {
+    padding: 10px;
+    color: #fff;
+    width: 100%;
+    left: 0;
+    position: absolute;
+    background-color: inherit;
+  }
+  .section {
+    display: block;
+  }
+  .section div {
+    width: 100%;
+    position: relative;
+    padding: 0px;
+    height: auto;
+  }
+}

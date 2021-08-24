@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!---font awasome-->
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    />
+    <link rel="stylesheet" href="/css/studentlist.css" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <nav class="nav" id="nav">
+      <div class="logo" id="logo">
+        <h1><span class="fab fa-accusoft"></span><span> POWA</span></h1>
+      </div>
+      <ul>
+        <li><a href="">Home</a></li>
+        
+        <li><a href="/user/logout" class="sign-out-btn">Sign out</a></li>
+      </ul>
+    </nav>
+    <!-- <div class="search_container">
+      <form>
+        <input type="text" name="search" id="search" placeholder="search...">
+        <button><span class="fas fa-search"></span></button>
+      </form>
+    </div> -->
+    <div class="container">
+      
+     <div class="showlist">
+        <div class="profile-content">
+            <div class="user">
+                <div class="user-image">
+                    <img src="/img/ceo.jpeg" alt="image" />
+                </div>
+               <div class="info">
+                    <div class="user-info">
+                        <h1>Personal info</h1>
+                        <h3><label><strong>Name:</strong> </label><%= details.name %></h3>
+                        <h3><label><strong>DOB:</strong> </label><%= details.dob %></h3>
+                        <h3><label><strong>REG No.:</strong> </label>student number</h3>
+                        <div>
+                            <span><label><strong>Email:</strong> </label><%= details.email %></span>
+                            <span><label><strong>Contact:</strong> </label><%= details.parent.pphone %></span>
+                        </div>
+                    </div>
+                    <div class="sch-info">
+                        <h1>School info</h1>
+                        
+                        <div>
+                            <span><h3></h3></span>
+                            <span>
+                                <h3><label><strong>School:</strong> </label>
+                                    <% 
+                                    let school;
+                                if(details.school == 1){
+                                    school = 'Nursary school'
+                                } 
+                                if(details.school == 2){
+                                    school = 'Primary school'
+                                } 
+                                if(details.school == 3){
+                                    school = 'Secondary school'
+                                } 
+                            %>
+                            <%= school %>
+                            </h3></span>
+                            <span><h3><label><strong>Class:</strong> </label><%= details.sclass %></h3></span>
+                            
+                        </div>
+                        
+                    </div>
+               </div>
+            </div>
+        </div>
+     </div>
+    </div>
+      </div>
+    </div>
+  </body>
+</html>

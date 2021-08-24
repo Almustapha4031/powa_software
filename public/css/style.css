@@ -1,0 +1,434 @@
+:root{
+    --bgGradient: linear-gradient(to right, #f3fcf4 0%, #c4fcc8 100%);
+    --primaryColor: #c4fcc8;
+    --primary:#0275d8;
+    --info:#5bc0de;
+    --success:#5cb85c; 
+    --primaryColor2: #f3fcf4;
+    --secondaryColor: #0d004c;
+    --buttonBG: #2C2D5F;
+    --white:#ffffff;
+    --fontfmly:  montserrat,arial,verdana;
+    --mdHeaderfont:20px;
+    --mdTextfont:17px;
+    --shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
+    --shadowAll: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 5px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+
+* {
+    box-sizing: border-box;
+  }
+body{
+    background-color: #e3fce5;
+    background-image: linear-gradient(315deg, #f3fcf4 0%, #c4fcc8 74%);
+    font-family: var(--fontfmly);
+    margin: 0px;
+    padding: 0px;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    margin: 0px;
+    background-color: var(--secondaryColor);
+    box-shadow: var(--shadow);
+}
+nav .logo,ul{
+    margin: 0px;
+    padding: 0px;
+    color:var(--primaryColor);
+}
+nav .logo{
+    padding:2px;
+    border-radius:20px; 
+}
+nav .logo img{
+    width:70px;
+    height:50px;
+    border-radius:20px;
+}
+nav ul{
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    justify-content: center;
+}
+nav ul li{
+    padding: 10px;
+    font-size: 1em;
+}
+nav ul li a{
+    text-decoration: none;
+    display: block;
+    position: relative;
+    padding: 0.2em 0;
+    color: var(--primaryColor);
+
+}
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.1em;
+    background-color: var(--primaryColor);
+    opacity: 0;
+    transition: opacity 300ms, transform 300ms;
+  }
+  nav ul li a:hover::after,
+  nav ul li a:focus::after {
+  opacity: 1;
+  transform: translate3d(0, 0.2em, 0);
+}
+nav ul li a.sign-in-btn{
+    border: 1px solid var(--primaryColor);
+    padding: 7px 16px;
+    border-radius: 5px;
+}
+
+.container{
+    width: 80%;
+    margin: 20px auto;
+    border-radius:5px;
+    background-color: var(--primaryColor2);
+    padding: 20px 40px;
+}
+.card{
+  padding: 10px 13px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px; /* 5px rounded corners */
+  position: relative;
+  height: auto;
+}
+#more {display: none;}
+#moreBTN{
+    display: flex;
+    justify-content: flex-end;
+    border: none;
+    padding: 3px 10px;
+    border-radius: 5px;
+    background-color: var(--primary);
+    color: var(--primaryColor);
+    cursor: pointer;
+}
+#moreBTN:hover{
+  background: var(--success);
+  border: none;
+}
+.org_info{
+    padding: 0px;
+}
+.org_info .freeinfo p {
+color:#000;
+font-family:  sans-serif, Calibri, Arial;
+line-height:1.6rem;
+word-spacing:2px;
+font-size:1.1rem;
+text-align:justify;
+}
+.org_info_title{
+    /* background-color: red; */
+    margin: 0px;
+    margin-bottom: 15px;
+    color:var(--secondaryColor);
+    font-family: sans-serif, Calibri, Arial;
+    font-size:20px;
+    font-weight:bold;
+}
+.h3-title{
+    color:#a5a4a4;
+    border-bottom:1px solid #a5a4a4;
+    padding-bottom:10px;
+}
+.section{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+.section div{
+    width:47%;
+    position: relative;
+    padding: 0px;
+    height: auto;
+}
+.program_img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.bg-text {
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+    color: var(--primaryColor);
+    font-weight: 999;
+    border: 3px solid var(--primaryColor);
+    z-index: 2;
+    width: 90%;
+    margin: 25px auto;
+    text-align: center;
+  }
+  /*school categories css*/
+  .school_categories{
+    display: flex;
+    justify-content: space-around;
+    
+  }
+  .school_categories .card{
+      flex-basis: 30%;
+      min-height: 400px;
+      padding: 0px;
+      
+  }
+  .school_categories div h3{
+      padding: 10px 20px;
+      text-align: center;
+      color: var(--white);
+      margin: 0px;
+      border-radius: 5px;
+      box-shadow: var(--shadow);
+  }
+  .school_categories  h3{
+    background-color: #a5a4a4;
+    padding: 70px;
+  }
+ 
+
+  .reg_btn{
+      display: flex;
+      justify-content: center;
+      padding: 10px 20px;
+      margin-top: 20px;
+  }
+  .register{
+    padding: 10px 20px;
+    width: 80%;
+    border:none;
+    color: var(--buttonBG);
+    border-radius: 5px;
+    background-color: inherit;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+  .register i{
+      float: right;
+  }
+  .school_categories .register:hover{
+    background-color: #a5a4a4;
+    color: var(--white);
+  }
+  .fee{
+      width: 70%;
+      margin: 0px auto;
+      margin-top: 40px;
+      padding: 5px;
+      /* background-color: red; */
+      text-align: center;
+      
+  }
+  .fee span{
+      font-size: 2em;
+  }
+  .fee sup,sub{
+      font-size: .7em;
+      font-weight: bolder;
+  }
+  .fee_menu{
+      position: absolute;
+      bottom: 0px;
+      width: 100%;
+  }
+  /* Style the button that is used to open and close the collapsible content */
+.collapsible {
+    background-color: var(--primaryColor2) !important;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--white);
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+  .collapsible i{
+    float: right;
+  }
+  
+  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+  .active, .collapsible:hover {
+    background-color: #ccc;
+  }
+.content {
+  padding: 0 18px;
+  background-color: var(--primaryColor);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+.screen {
+    position: relative;
+    background-color: var(--secondaryColor);
+    border-radius: 15px;
+  }
+  
+  .screen:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 20px;
+    bottom: 0;
+    border-radius: 15px;
+    z-index: -1;
+  }
+  
+  
+  .screen-body {
+    display: flex;
+  }
+  
+  .screen-body-item {
+    flex: 1;
+    padding: 50px;
+  }
+  
+  .screen-body-item.left {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .app-title {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color: var(--primaryColor);
+    font-size: 26px;
+  }
+  
+  .app-title:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 25px;
+    height: 4px;
+    background-color: var(--primaryColor);
+  }
+  
+  .app-contact {
+    margin-top: auto;
+    font-size: 8px;
+    color: var(--primaryColor);
+  }
+  
+  .app-form-group {
+    margin-bottom: 15px;
+  }
+  
+  .app-form-group.message {
+    margin-top: 40px;
+  }
+  
+  .app-form-group.buttons {
+    margin-bottom: 0;
+    text-align: right;
+  }
+  
+  .app-form-control {
+    width: 100%;
+    padding: 10px 0;
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--primaryColor);
+    color: rgb(102, 101, 101);
+    font-size: 14px;
+    text-transform: uppercase;
+    outline: none;
+    transition: border-color .2s;
+  }
+  
+  .app-form-control::placeholder {
+    color: #a5a4a4;
+  }
+  
+  .app-form-control:focus {
+    border-bottom-color: rgb(102, 101, 101);
+  }
+  
+  .app-form-button {
+    background: none;
+    border: none;
+    color: var(--primaryColor);
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .app-form-button:hover {
+    color: var(--primaryColor);
+  }
+/*contact form end*/
+@media screen and (max-width:960px) {
+  .org_info .freeinfo, .org_info_title{
+     display: none;
+  }
+  .container{
+    width: 100%;
+  }
+ 
+}
+@media screen and (max-width:768px) {
+  .reg_btn .register, nav ul li:nth-child(1),li:nth-child(3),li:nth-child(4){
+    display: none;
+  }
+}
+@media screen and (max-width:560px) {
+  .school_categories{
+    display: inline-block;
+    width: 100%;
+  }
+  .school_categories .card{
+    flex-basis: 100%;
+    margin-bottom: 25px;
+  }
+  .screen .app-title{
+    display: none;
+  }
+  .screen .screen-body-item {
+    background-color: var(--secondaryColor);
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+  }
+  .screen .screen-body-item .app-form{
+    padding: 10px;
+    color:#fff;
+    width: 100%;
+    left:0;
+    position: absolute;
+    background-color: inherit;
+  }
+  .section{
+    display: block;
+}
+.section div{
+    width:100%;
+    position: relative;
+    padding: 0px;
+    height: auto;
+}
+}

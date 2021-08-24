@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--link to css-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />  
+    <link rel="stylesheet" href="./css/style.css">
+    <!---font awasome-->
+    <title><%= title %></title>
+</head>
+<body>
+    <nav class="nav" id="nav">
+        <div class="logo" id="logo">
+            <h1><span class="fab fa-accusoft"></span><span> POWA</span></h1>
+        </div>
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="/user/login">login</a></li>
+            <li><a href="/user/create" class="sign-in-btn">Sign up</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        
+        <div class="org_info">
+            <h6 class="org_info_title">Welcome to Peals of wisdom foundation</h6>
+            <div class="card freeinfo">
+            <p > Peals of wisdom for the Young Generation Initiative are helping hands for the less privilege women, young persons and children.<span id="dots">...</span><span id="more">
+            In today’s world, many of us assume that items of material value will be enough to make us happy and content throughout life. What we don’t seem to realize is that the happiness from acquiring these possessions is just temporary, so we must seek out what makes us truly happy from elsewhere.
+            This short-lived high that we get from such purchasing or acquiring insignificant items will eventually drive us to greed, which is a feeling that can never be sated. Those who seek out possessions will be looking to get their short-term high again and again
+            So, we ask the question: where can we find real happiness?
+            No matter who we are - regardless of age, race, religion or creed - we have all been created by Allah SWT with a heart, with emotions and with feelings. These feelings change according to how we choose to live our life, and how we accustom ourselves to the world around us.
+            One thing that comes naturally to those in touch with their emotions is empathy; empathy for others, and empathy for humanity in general. When we have empathy, we know exactly how we can make a difference to the lives of others around us. This is where real happiness can be found. If you don’t believe us, try it for yourself.
+            
+            </span></p>
+            <button onclick="readMore()" id="moreBTN">Read more</button>  
+
+            </div>
+            <h3 class="h3-title">Programs</h3>
+            <div class="section">
+                <div class="card school_program">
+                    <img src="./img/student.jpg" class="program_img" id="program_img_sch"/>
+                    <div class="bg-text">
+                      <h4>Private School</h4>
+                      <p>Nursary, Primary and Secondary</p>
+                    </div>
+                </div>
+                <div class="card organization_program">
+                    <img src="img/tailoring.jpg" class="program_img" id="program_img_ord"/>
+                  <div class="bg-text">
+                    <h4>Skills Aquisition</h4>
+                    <p>Tailoring, Shoe making and Other</p>
+                  </div>
+                </div>
+            </div>
+            <h3 class="h3-title">Schools</h3>
+            <div class="school_categories">
+                <div class="card nursary">
+                   <h3>Nursary</h3>
+                   <div class="fee">
+                       <sup>NGN</sup>
+                       <span>100</span>
+                       <sub>/term</sub>
+                   </div>
+                   <div class="reg_btn">
+                       <a href="/registration.html"class="register">Register Now <i class="fas fa-arrow-right"></i></a>
+                   </div>
+                   <div class="fee_menu">
+                    <button type="button" class="collapsible">Nursary one <i class="fas fa-angle-down"></i></button>
+                    <div class="content">
+                      <p>Nursary fee...</p>
+                    </div>
+                    <button type="button" class="collapsible">Nursary two<i class="fas fa-angle-down"></i></button>
+                    <div class="content">
+                      <p>Nursary fee...</p>
+                    </div>
+                    <button type="button" class="collapsible">Nursary three<i class="fas fa-angle-down"></i></button>
+                    <div class="content">
+                      <p>Nursary fee...</p>
+                    </div>
+                   </div>
+                </div>
+                <div class="card primary">
+                    <h3>Primary</h3>
+                    <div class="fee">
+                        <sup>NGN</sup>
+                        <span>100</span>
+                        <sub>/term</sub>
+                    </div>
+                    <div class="reg_btn">
+                        <a href="/registration.html"class="register">Register Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="fee_menu">
+                        <button type="button" class="collapsible">Primary one<i class="fas fa-angle-down"></i></button>
+                        <div class="content">
+                          <p>Primary fee...</p>
+                        </div>
+                        <button type="button" class="collapsible">Primary two<i class="fas fa-angle-down"></i></button>
+                        <div class="content">
+                          <p>Primary fee...</p>
+                        </div>
+                        <button type="button" class="collapsible">Primary three<i class="fas fa-angle-down"></i></button>
+                        <div class="content">
+                          <p>Primary fee...</p>
+                        </div>
+                       </div>
+                </div>
+                <div class="card secondary">
+                    <h3>Secondary</h3>
+                    <div class="fee">
+                        <sup>NGN</sup>
+                        <span>100</span>
+                        <sub>/term</sub>
+                    </div>
+                    <div class="reg_btn">
+                        <a href="/registration.html" class="register">Register Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="fee_menu">
+                        <button type="button" class="collapsible">Secondary one<i class="fas fa-angle-down"></i></button>
+                        <div class="content">
+                          <p>Secondary fee...</p>
+                        </div>
+                        <button type="button" class="collapsible">Secondary two<i class="fas fa-angle-down"></i></button>
+                        <div class="content">
+                          <p>Secondary fee...</p>
+                        </div>
+                        <button type="button" class="collapsible">Secondary three<i class="fas fa-angle-down"></i></button>
+                        <div class="content">
+                          <p>Secondary fee...</p>
+                        </div>
+                       </div>
+
+                </div>
+                
+            </div>
+                <h3 class="h3-title">Contact Info</h3>
+                <div class="card screen">
+                        <div class="screen-body">
+                          <div class="screen-body-item left">
+                            <div class="app-title">
+                              <span>CONTACT</span>
+                              <span>US</span>
+                              <div class="social_links">
+                                <i class="fab fa-whatsapp"></i>
+                                <i class="fab fa-facebook"></i>
+                                <i class="fab fa-instagram"></i>
+                                <i class="fab fa-google"></i>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="screen-body-item">
+                            <div class="app-form">
+                              <div class="app-form-group">
+                                <input class="app-form-control" placeholder="NAME" >
+                              </div>
+                              <div class="app-form-group">
+                                <input class="app-form-control" placeholder="EMAIL">
+                              </div>
+                              <div class="app-form-group">
+                                <input class="app-form-control" placeholder="CONTACT NO">
+                              </div>
+                              <div class="app-form-group message">
+                                <input class="app-form-control" placeholder="MESSAGE">
+                              </div>
+                              <div class="app-form-group buttons">
+                                <button class="app-form-button">CANCEL</button>
+                                <button class="app-form-button">SEND</button>
+                              </div>
+                            
+                </div>
+        </div>
+    </div>
+    <script src="./js/main.js"></script>
+</body>
+</html>

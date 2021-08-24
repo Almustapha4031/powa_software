@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />  
+    <link rel="stylesheet" href="/css/invoice.css"/>
+    <title><%= title %></title>
+</head>
+<body>
+    <div id="menu">
+        <div class="left-menu">
+            <a id="print" class="print" ><span class="fas fa-print"></span> print</a>
+            <a id="paybtn" class="paybtn" ><span class="">&#8358;</span> pay now</a>
+        </div>
+        <div class="right-menu">
+            <a href="/user_account"><span class="fas fa-home"></span></a>
+            <a href="/user_account"><span class="fas fa-sign-out"></span></a>
+        </div>
+   </div>
+    
+    <div class="invoice" id="invoice">
+       
+        
+        <div class="invoice-head">
+            <div class="invoice-title">
+                <h1>INVOICE</h1>
+                <span>Date: </span>
+               
+                <small></small>
+            </div>
+            <div class="invoice-logo"><span class="fab fa-accusoft"></span><span> POWA</span></div>
+        </div>
+        <div class="invoice-body">
+            <div class="body-info">
+                <div class="student-info">
+                    <h3>Name: studentData</h3>
+                    <div><%= studentData.name %></div>
+                    <h3>Stdent Number:</h3>
+                    <div>11111111111111111</div>
+                    <h3>school:</h3>
+                    <div><%= studentData.school %></div>
+                    <h3>class: </h3>
+                    <div><%= studentData.sclass %></div>
+                </div>
+            <div class="school-info">
+                <h3>School: </h3>
+                    <div>government day secondary school Birnin Kebbi</div>
+                    <h3>Contact: </h3>
+                    <small>powa@powa.com.ng ||</small>
+                    <small>08166966063</small>
+            </div>
+            </div>
+            <div class="price">
+                <h3 class="info_provide">Please provide a copy of your invoice when making payment</h3>
+                <table width="100%">
+                    <thead>
+                        <tr>
+                            <td>Description</td>
+                            <td>Quantity</td>
+                            <td>Cost</td>
+                        </tr>
+                       
+                    </thead>
+                    <tbody class="cart-items">
+                        
+                                <tr class="cart-row">
+                            <td class="item-title"></td>
+                            <td class="item-quantity"></td>
+                            <td class="item-price"></td>
+                           
+                        </tr>
+                            
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="invoice-footer">
+            <p>Total</p>
+            <p></p>
+        </div>
+      </div>
+      
+    <script src="/js/invoice.js"></script>
+</body>
+</html>
