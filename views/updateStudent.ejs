@@ -46,47 +46,35 @@
                 </div> -->
           <div class="edit-form">
             <form method="post" action="/student/reg_form">
+              <%
+                let school;
+                if(data.school == 1){
+                  school = 'Nursary'
+                }
+                if(data.school == 2){
+                  school = 'Primary'
+                }
+                if(data.school == 3){
+                  school = 'Secondary'
+                }
+              %>
+
               <div class="persornal-info">
                 <h3>Personal info</h3>
                 <input type="text" name="name" value="<%= data.name %>" />
                 <div class="name error"></div>
                 <input type="email" name="email" value="<%= data.email %>" />
                 <div class="email error"></div>
-                <select class="gender" name="gender" id="gender">
-                  <option value="">gender</option>
-                  <option value="male">male</option>
-                  <option value="female">female</option>
-                </select>
+                <input type="text" class="gender" name="gender" value="<%= data.gender %>">
                 <div class="gender error"></div>
-                <input type="date" name="dob" />
+                <input type="text" class="dob" name="dob" value="<%= data.dob %>">
                 <div class="dob error"></div>
               </div>
               <div class="school-info">
                 <h3>School info</h3>
-                <select class="school" name="school" id="school">
-                  <option value="">school</option>
-                  <option value="1">Nursary</option>
-                  <option value="2">Primary</option>
-                  <option value="3">Secondary</option>
-                </select>
+                <input type="text" class="school" name="school" value="<%= school %>">
                 <div class="school error"></div>
-                <select class="class" name="sclass" id="class">
-                  <option value="">class</option>
-                  <option value="nursary 1">nursary 1</option>
-                  <option value="nursary 2">nursary 2</option>
-                  <option value="nursary 3">nursary 3</option>
-                  <option value="primary 1">primary 1</option>
-                  <option value="primary 2">primary 2</option>
-                  <option value="primary 3">primary 3</option>
-                  <option value="primary 4">primary 4</option>
-                  <option value="primary 5">primary 5</option>
-                  <option value="jss 1">jss 1</option>
-                  <option value="jss 2">jss 2</option>
-                  <option value="jss 3">jss 3</option>
-                  <option value="ss 1">ss 1</option>
-                  <option value="ss 2">ss 2</option>
-                  <option value="ss 3">ss 3</option>
-                </select>
+                <input type="text" class="sclass" name="sclass" value="<%= data.sclass %>">
                 <div class="sclass error"></div>
               </div>
               <div class="parent-info">
@@ -97,7 +85,7 @@
                 <div class="pemail error"></div>
                 <input type="text" name="pphone" value="<%= data.parent.pphone %>" />
                 <div class="pphone error"></div>
-                <textarea name="address" value="<%= data.parent.address %>"></textarea>
+                <textarea name="address"><%= data.parent.address %></textarea>
                 <div class="address error"></div>
               </div>
               <br>
@@ -108,7 +96,7 @@
       </div>
     </div>
   </body>
-  <!-- <script>
+  <script>
     const formEL = document.querySelector('form');
     const submitErrorEl = formEL.querySelector('button');
     const nameErrorEl = document.querySelector('.name.error');
@@ -137,35 +125,36 @@
         let address = formEL.address.value;
 
         try{
-            let formdata = {name, email, dob, gender, school, sclass, pname, pemail, pphone, address};
-            let url = '/student/reg_form';
+            let formdata = {name, email, dob, gender, school, sclass, parent:{pname, pemail, pphone, address}};
+            let url = '/student/record/edit/<%= data.parent._id %>';
+            // console.log(formdata, url);
             let options = {
-                method: 'POST',
+                method: 'PUT',
                 body: JSON.stringify(formdata),
                 headers: {'Content-Type':'application/json'}
             }
             const req = await fetch(url, options);
             const data = await req.json();
-           
-            if(data.errors){
-                nameErrorEl.textContent = data.errors.name;
-                emailErrorEl.textContent = data.errors.email;
-                dobErrorEl.textContent = data.errors.dob;
-                genderErrorEl.textContent = data.errors.gender;
-                schoolErrorEl.textContent = data.errors.school;
-                sclassErrorEl.textContent = data.errors.sclass;
-                pnameErrorEl.textContent = data.errors.pname;
-                pemailErrorEl.textContent = data.errors.pemail;
-                pphoneErrorEl.textContent = data.errors.pphone;
-                addressErrorEl.textContent = data.errors.address;
+            console.log(data);
+            // if(data.errors){
+            //     nameErrorEl.textContent = data.errors.name;
+            //     emailErrorEl.textContent = data.errors.email;
+            //     dobErrorEl.textContent = data.errors.dob;
+            //     genderErrorEl.textContent = data.errors.gender;
+            //     schoolErrorEl.textContent = data.errors.school;
+            //     sclassErrorEl.textContent = data.errors.sclass;
+            //     pnameErrorEl.textContent = data.errors.pname;
+            //     pemailErrorEl.textContent = data.errors.pemail;
+            //     pphoneErrorEl.textContent = data.errors.pphone;
+            //     addressErrorEl.textContent = data.errors.address;
 
-            }
-            if(data.student){
-                location.assign('/invoice');
-            }
+            // }
+            // if(data.student){
+            //     location.assign('/invoice');
+            // }
         }catch(err) {
             console.log(err.message);
         }     
     })
-</script> -->
+</script>
 </html>

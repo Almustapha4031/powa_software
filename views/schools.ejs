@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!---font awasome-->
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    />
+    <link rel="stylesheet" href="/css/schools.css" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <nav class="nav" id="nav">
+      <div class="logo" id="logo">
+        <h1><span class="fab fa-accusoft"></span><span> POWA</span></h1>
+      </div>
+      <ul>
+        <li><a href="/student/reg_form">Home</a></li>
+        <li><a href="/user/logout" class="sign-out-btn">Sign out</a></li>
+      </ul>
+    </nav>
+   
+    <div class="container">
+      <div class="tabpanel">
+        <ul class="tabs">
+          <li data-id="#tab1" class="tab-menu active">Reg items</li>
+          <li data-id="#tab2" class="tab-menu">Classes</li> 
+       </ul>
+      </div>
+     <div class="panels">
+      <div class="panel active" id="tab1">
+        <div class="school-chooser">
+          <label for="NUR">
+            <input type="radio" name="school"  id="NUR" value="NUR">
+            NUR
+          </label>
+          <label for="PRI">
+            <input type="radio" name="school"  id="PRI" value="PRI">
+            PRI
+          </label>
+          <label for="JSS">
+            <input type="radio" name="school"  id="JSS" value="JSS">
+            JSS
+          </label>
+          <label for="SS">
+            <input type="radio" name="school" id="SS" value="SS">
+            SS
+          </label>
+        </div>
+        <div class="panel-body">
+          <div id="success"></div>
+          <div id="error"></div> 
+        <div class="form-container">
+          <form id="items_form">
+            <input type="text" class="item" id="item" name="item" placeholder="item"/>
+            <input type="text" class="amount" id="amount" name="amount" placeholder="amount"/>
+            <button type="submit"> Add item</button>
+          </form>
+        </div>
+        <div class="data-list">
+          <%= //itemData %>
+        </div>
+      </div>
+      </div>
+      <div class="panel" id="tab2">tab Two</div>
+     </div>
+    </div>
+      </div>
+    </div>
+  </body>
+  <!-- <script src='/js/studentlist.js'></script> -->
+  <script>
+    const tabsEL = document.querySelector('ul.tabs');
+    const panelsEL = document.querySelectorAll('div.panel'); 
+    const tabmenu = document.querySelectorAll('ul.tabs li.tab-menu');
+    const formEL = document.getElementById('items_form');
+    const tableData = document.querySelector('div.data-list');
+    const errorEL = document.getElementById('error');
+    const successEL = document.getElementById('success');
+    let nuritems;
+    let priitems;
+    let jssitems;
+    let ssitems;
+
+    /*--------------------------------------------  TAB PANEL SCRIPT -----------------------------------------*/
+    for (let i = 0; i < tabmenu.length; i++) {
+       tabmenu[i].onclick = function(e) {
+          
+          var c = 0;
+          while (c < tabmenu.length) {
+            tabmenu[c++].className = 'tab-menu';
+          }
+          tabmenu[i].className = 'tab-menu active';
+        }
+      }
+    tabsEL.addEventListener('click', (e) => {
+      if(e.target.tagName === 'LI'){
+        const targetPanel = document.querySelector(e.target.dataset.id);
+        panelsEL.forEach((panel)=>{
+          // console.log(panel);
+          if(panel === targetPanel){
+            panel.classList.add('active');
+            }else{
+                panel.classList.remove('active');
+                
+            }
+    })
+  }
+})
+
+/*------------------------------------------------FORM PROCESSING ----------------------------------------------*/
+// submiting items form
+formEL.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const schoolsEL = document.querySelectorAll('input[type=radio]');
+  const schoolsArray = Array.from(schoolsEL);
+  const selectedSchoolEL = SeletedSchool(schoolsArray);
+if(selectedSchoolEL != undefined){
+  if(formEL.item.value.trim() != '' && formEL.amount.value.trim() != ''){
+  let selectedSch = selectedSchoolEL.value;
+  let item = formEL.item.value;
+  let amount = formEL.amount.value;
+  
+  const data = {school: selectedSch, item: item, amount: amount};
+  const url = '/schools/item';
+  const options = {
+    method: 'post',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json',
+      'Content-Length': data.length
+    }
+  }
+  try{
+    const response = await fetch(url, options);
+    const data = await response.json();
+    if(data){
+      selectedSchoolEL.value = '';
+      formEL.item.value = '';
+      formEL.amount.value = '';
+      addToUi();
+      successHandler(successEL, 'Item added successfully');
+    }
+  }catch(err){
+    console.log(err);
+  }
+}else{
+   
+    errorHandler(errorEL, 'all filds are requre');
+  }
+}else{
+    errorHandler(errorEL, 'please select school');
+}
+}) 
+// return selected school
+const SeletedSchool = (schools) => {
+  let selected;
+  schools.forEach((school) => {
+    if(school.checked){
+      selected = school;
+    }
+  })
+  return selected;
+
+}
+// handle success
+const successHandler = (element, msg) => {
+  // errorMSG = 'all filds are requre';
+  element.textContent = msg; 
+  element.style.display ="block";
+    setTimeout(() => {
+      element.textContent = '';
+      element.style.display ="none";
+    }, 2000);
+}
+// handle errors
+const errorHandler = (element, msg) => {
+  // errorMSG = 'all filds are requre';
+  element.textContent = msg; 
+  element.style.display ="block";
+    setTimeout(() => {
+      element.textContent = '';
+      element.style.display ="none";
+    }, 2000);
+}
+
+/* ---------------------------------------------------  DISPLAYING DATA -----------------------------------------*/
+// filter items base on school
+const filterOrg = (original, filte) => {
+  let data = original.filter((original) => {
+    if(original.school === filte){
+      return true;
+    }
+  })
+  return data;
+
+}
+
+// render items base on schools
+
+const renderTable = (items, val) =>{
+  let table = `<h4>${val}</h4><table width="70%">
+    <tr><td>item</td><td>price</td></tr>`;
+  items.forEach((item) => {
+    table += `<tr><td>${item.item}</td><td>${item.amount}</td><td>Books</td></tr>`;
+  })
+
+  table += `</table><br>`;
+ 
+return table;
+
+}
+
+const addToUi = () => {
+let originalArray = JSON.parse('<%- JSON.stringify(itemData) %>');
+  nuritems = filterOrg(originalArray, 'NUR');
+  nurTB = renderTable(nuritems,'NURSARY');
+  tableData.innerHTML += nurTB;
+  priitems = filterOrg(originalArray, 'PRI');
+  priTB = renderTable(priitems,'PRIMARY');
+  tableData.innerHTML += priTB;
+  jssitems = filterOrg(originalArray, 'JSS');
+  jssTB = renderTable(jssitems,'JSS');
+  tableData.innerHTML += jssTB;
+  ssitems = filterOrg(originalArray, 'SS');
+  ssTB = renderTable(ssitems,'SS');
+  tableData.innerHTML += ssTB;
+}
+addToUi();
+  </script>
+</html>

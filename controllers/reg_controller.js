@@ -51,7 +51,7 @@ module.exports.student_details_record = async (req,  res) => {
     }  
 }
 
-module.exports.update_student_record = async (req,  res) => { 
+module.exports.get_student_update_form = async (req,  res) => { 
     let id = req.params.id;
     try{
         let delres = await Student.findById({_id: id});
@@ -60,6 +60,19 @@ module.exports.update_student_record = async (req,  res) => {
         res.status(400).json({delmsg: 'Record not deleted'});
     }
    
+}
+module.exports.put_student_update_form = async (req,  res) => { 
+    let id = req.params.id;
+    let body = req.body;
+    Student.findByIdAndUpdate(id , req.body, {useFindAndModify: false}).then((data)=>{
+        if(!data){
+            res.status(404).json({msg: 'cannot modify user', data: req.body});
+        }else{
+            res.status(200).json({msg:data});
+        }
+    }).catch((err) => {
+        res.status(500).json({err});
+    })
 }
 
 module.exports.delete_student_record = async (req,  res) => {

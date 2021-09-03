@@ -1,7 +1,12 @@
+/*mongod starting string
+    -> C:\Program Files\MongoDB\Server\4.4\bin
+    -> mongod
+*/
 const express = require('express');
 const dotenv = require('dotenv');
-const route = require('./routes/reg_route');
 const auth_route = require('./routes/auth_route');
+const reg_route = require('./routes/reg_route');
+const schls_route = require('./routes/schools_route');
 const DB = require('./dbconnection/connection');
 const cookieParser = require('cookie-parser');
 const {requireAuth} = require('./middleware/auth_middleware');
@@ -31,8 +36,9 @@ app.get('/home',(req,res) => {
     res.redirect('/');
 })
 app.use('/user',auth_route);
-app.use(requireAuth);
-app.use('/student',route);
+// app.use(requireAuth);
+app.use('/student',reg_route);
+app.use('/schools',schls_route);
 
 
 

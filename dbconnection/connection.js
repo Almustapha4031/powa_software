@@ -9,7 +9,7 @@ module.exports.DBconnection = (app) => {
     mongoose.connect(mongobd_url,{
         useCreateIndex:true,
         useNewUrlParser:true,
-        useUnifiedTopology:true
+        useUnifiedTopology:true,
     }).then((con) => {
         console.log('db connected');
         app.listen(port,() => {
